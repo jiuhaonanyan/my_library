@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+
+type PullStyle = CSSProperties & {
+  "--pull": string;
+  "--lamp-intensity": number;
+};
 
 type Theme = "light" | "dark";
 
@@ -100,9 +105,9 @@ export default function LampPullCord({
     pointerIdRef.current = null;
   };
 
-  const pullStyle = {
-    ["--pull" as const]: `${pull}px`,
-    ["--lamp-intensity" as const]: intensity,
+  const pullStyle: PullStyle = {
+    "--pull": `${pull}px`,
+    "--lamp-intensity": intensity,
   };
 
   return (
